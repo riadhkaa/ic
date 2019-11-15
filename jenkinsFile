@@ -15,10 +15,11 @@ pipeline {
         // Jenkins credential id to authenticate to Nexus OSS
         NEXUS_CREDENTIAL_ID = "nexus-credentials"
     }
+    
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/riadhkaa/ic.git'
+                git 'https://github.com/nadejeT/mavenjenkins'
             }
         }
         stage('Build') {
