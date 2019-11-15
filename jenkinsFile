@@ -3,6 +3,7 @@ pipeline {
     tools { 
         maven 'Maven' 
     }
+    
     environment {
         // This can be nexus3 or nexus2
         NEXUS_VERSION = "nexus3"
@@ -19,7 +20,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/nadejeT/mavenjenkins'
+                git 'https://github.com/riadhkaa/ic'
             }
         }
         stage('Build') {
