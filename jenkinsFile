@@ -25,12 +25,12 @@ pipeline {
         }
         stage('Build') {
             steps {
-               bat label: '', script: 'mvn install'
+               sh 'mvn install'
    }
         }
         stage('Test') {
             steps {
-                bat label: '', script: 'mvn test'
+                sh 'mvn test'
             }
         }
         stage("Deploy") {
@@ -47,7 +47,7 @@ pipeline {
                     // Assign to a boolean response verifying If the artifact name exists
                     artifactExists = fileExists artifactPath;
                     if(artifactExists) {
-                        echo "*** File: ${artifactPath}, group: ${pom.groupId}, packaging: ${pom.packaging}, version ${pom.version}";
+                        echo "* File: ${artifactPath}, group: ${pom.groupId}, packaging: ${pom.packaging}, version ${pom.version}";
                         nexusArtifactUploader(
                             nexusVersion: NEXUS_VERSION,
                             protocol: NEXUS_PROTOCOL,
@@ -70,10 +70,10 @@ pipeline {
                             ]
                         );
                     } else {
-                        error "*** File: ${artifactPath}, could not be found";
+                        error "* File: ${artifactPath}, could not be found";
                     }
                 }
             }
         }
-          
-
+    }
+}
