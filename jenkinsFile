@@ -75,10 +75,5 @@ pipeline {
                 }
             }
         }
-        post {
-        always {
-            emailext body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}" ,to: "slim.maali@esprit.tn", recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Jenkins Kamel 5edmtou'
-        }
-    }
-    }
+     }
 }
